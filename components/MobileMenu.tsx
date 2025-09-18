@@ -4,6 +4,7 @@ import { X, Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -24,24 +25,31 @@ export default function MobileMenu() {
   }, [isOpen]);
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden block">
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 text-white focus:outline-none"
+        className="p-2 text-white focus:outline-none hover:bg-white/10 rounded-md"
         aria-label="Open menu"
       >
         <Menu size={24} />
       </button>
-      <div
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed inset-0 bg-black bg-opacity-50 z-40 ${
+          !isOpen && "pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       />
-      <div
-        className={`fixed top-0 right-0 w-4/5 max-w-xs h-full bg-[#090909] border-l border-white/10 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } overflow-y-auto`}
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: isOpen ? 0 : "100%" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={`fixed top-0 right-0 w-4/5 max-w-xs h-full bg-[#090909] border-l border-white/10 shadow-xl z-50 overflow-y-auto ${
+          isOpen ? "menu-open" : ""
+        }`}
+        style={{ display: isOpen ? "block" : "none" }}
       >
         <div className="flex justify-end p-4">
           <button
@@ -291,7 +299,7 @@ export default function MobileMenu() {
             </Button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

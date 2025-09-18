@@ -2,7 +2,7 @@
 import Card from "@/components/Card";
 import { features } from "@/lib/features";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 export default function Features() {
   return (
     <div className="w-full bg-[#111119] p-10 py-20 mt-5 mb-0 flex flex-col gap-8 items-center relative overflow-hidden">

@@ -3,7 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-html, body {
+html,
+body {
   @apply bg-gradient-to-br from-[#090909] via-[#111119] to-[#343343] text-white;
   @apply min-h-screen;
 }
@@ -217,7 +218,21 @@ html, body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Mobile menu fixes */
+.menu-open {
+  visibility: visible !important;
+  display: block !important;
+  transform: translateX(0) !important;
+}
+
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: block !important;
   }
 }

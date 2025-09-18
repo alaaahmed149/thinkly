@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import {
   Twitter,
   Instagram,
@@ -162,7 +162,7 @@ export default function Footer() {
         {/* Bottom border with subtle gradient */}
         <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between">
           <p className="text-xs text-gray-500">
-            Designed with ❤️ by{" "}
+            © Designed by{" "}
             <a
               href="https://github.com/alaaahmed149"
               target="_blank"

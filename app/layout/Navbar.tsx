@@ -1,8 +1,33 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import MenuItems from "@/components/MenuItems";
-import MobileMenu from "@/components/MobileMenu";
+import dynamic from "next/dynamic";
+
+const MobileMenu = dynamic(() => import("@/components/MobileMenu"), {
+  ssr: false,
+  loading: () => (
+    <div className="md:hidden block">
+      <button className="p-2 text-white focus:outline-none hover:bg-white/10 rounded-md">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  ),
+});
 
 export default function Navbar() {
   return (
